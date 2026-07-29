@@ -49,6 +49,15 @@ function validateAndBuildLines(request: CreateOrderRequest): OrderLine[] {
   const seenProductIds = new Set<string>();
 
   for (const item of request.items) {
+    if (
+      typeof item !== 'object' ||
+      item === null ||
+      typeof item.productId !== 'string' ||
+      item.productId.trim() === ''
+    ) {
+      throw new OrderValidationError('Each order item must include a valid productId.');
+    }
+
     if (seenProductIds.has(item.productId)) {
       throw new OrderValidationError(
         `Product "${item.productId}" was added more than once. Combine duplicate items into a single quantity.`,

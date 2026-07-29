@@ -3,60 +3,99 @@
     "id": "p1",
     "name": "Wireless Mouse",
     "price": 19.99,
-    "stock": 16
+    "stock": 16,
+    "images": [
+      "https://m.media-amazon.com/images/I/31SOCCZygoL.jpg",
+      "https://hp.widen.net/content/my5pvz9ijo/webp/my5pvz9ijo.png?w=573&h=430&dpi=72&color=ffffff00",
+      "https://hp.widen.net/content/1tc247l2xf/png/1tc247l2xf.png?w=800&h=600&dpi=72&color=ffffff00"
+    ]
   },
   {
     "id": "p2",
     "name": "Mechanical Keyboard",
     "price": 79.5,
-    "stock": 11
+    "stock": 11,
+    "images": [
+      "https://vgnlab.com/cdn/shop/files/Azure_Blue-Ice_Cream_pro_Switch.png?v=1760515495",
+      "https://mechkeys.com/cdn/shop/files/mchose-k87-three-mode-gasket-mechanical-keyboard-mechkeysshop-816948.jpg?v=1764346205"
+    ]
   },
   {
     "id": "p3",
     "name": "27-inch Monitor",
     "price": 189,
-    "stock": 2
+    "stock": 3,
+    "images": [
+      "https://hp.widen.net/content/9chugr9d9e/png/9chugr9d9e.png?w=800&h=600&dpi=72&color=ffffff00",
+      "https://hp.widen.net/content/ynczbxsmck/png/ynczbxsmck.png?w=800&h=600&dpi=72&color=ffffff00",
+      "https://m.media-amazon.com/images/I/61hObboWY6L.jpg"
+    ]
   },
   {
     "id": "p4",
     "name": "USB-C Hub",
     "price": 24,
-    "stock": 29
+    "stock": 29,
+    "images": [
+      "https://cdn.comfy.ua//media/catalog/product/5/4/545091329.jpg"
+    ]
   },
   {
     "id": "p5",
     "name": "Webcam 1080p",
     "price": 45,
-    "stock": 0
+    "stock": 0,
+    "images": [
+      "https://content1.rozetka.com.ua/goods/images/big/546739650.jpg"
+    ]
   },
   {
     "id": "p6",
     "name": "Laptop Stand",
     "price": 32.5,
-    "stock": 18
+    "stock": 18,
+    "images": [
+      "https://content1.rozetka.com.ua/goods/images/big/653643726.jpg",
+      "https://content1.rozetka.com.ua/goods/images/big/653643741.png"
+    ]
   },
   {
     "id": "p7",
     "name": "Bluetooth Speaker",
     "price": 54.99,
-    "stock": 20
+    "stock": 20,
+    "images": [
+      "https://euro-brand.com.ua/wp-content/uploads/2023/07/09092-00.jpg.webp",
+      "https://euro-brand.com.ua/wp-content/uploads/2023/07/09092-00_f.jpg"
+    ]
   },
   {
     "id": "p8",
     "name": "External SSD 1TB",
     "price": 89,
-    "stock": 10
+    "stock": 10,
+    "images": [
+      "https://i.allo.ua/media/catalog/product/cache/3/image/524x494/602f0fa2c1f0d1ba5e241f914e856ff9/3/7/370236-1.webp"
+    ]
   },
   {
     "id": "p9",
     "name": "Noise-Cancelling Headphones",
     "price": 129,
-    "stock": 7
+    "stock": 7,
+    "images": [
+      "https://beoplay.com.ua/wp-content/uploads/2025/06/Beoplay-H100-0006-768x977.jpg",
+      "https://beoplay.com.ua/wp-content/uploads/2025/06/Beoplay-H100-0033-768x750.jpg",
+      "https://beoplay.com.ua/wp-content/uploads/2025/11/The_Centennial_Collection_Beoplay_H100_0019-768x594.jpg"
+    ]
   },
   {
     "id": "p10",
     "name": "Desk Lamp",
     "price": 22,
-    "stock": 0
+    "stock": 0,
+    "images": [
+      "https://m.media-amazon.com/images/I/61-EXxKU6eL._AC_SL1500_.jpg"
+    ]
   }
 ]

@@ -3,15 +3,29 @@ import fs from 'fs';
 import path from 'path';
 
 const DATA_PATH = path.join(__dirname, '..', 'data', 'products.json');
-const original = fs.readFileSync(DATA_PATH, 'utf-8');
+const ORDERS_PATH = path.join(__dirname, '..', 'data', 'orders.json');
+
+const originalProducts = fs.readFileSync(DATA_PATH, 'utf-8');
+const ordersFileExisted = fs.existsSync(ORDERS_PATH);
+const originalOrders = ordersFileExisted ? fs.readFileSync(ORDERS_PATH, 'utf-8') : null;
+
+function resetOrdersFile(): void {
+  if (ordersFileExisted) {
+    fs.writeFileSync(ORDERS_PATH, originalOrders as string);
+  } else if (fs.existsSync(ORDERS_PATH)) {
+    fs.unlinkSync(ORDERS_PATH);
+  }
+}
 
 beforeEach(() => {
-  fs.writeFileSync(DATA_PATH, original);
+  fs.writeFileSync(DATA_PATH, originalProducts);
+  resetOrdersFile();
   vi.resetModules();
 });
 
 afterAll(() => {
-  fs.writeFileSync(DATA_PATH, original);
+  fs.writeFileSync(DATA_PATH, originalProducts);
+  resetOrdersFile();
 });
 
 describe('createOrder', () => {
