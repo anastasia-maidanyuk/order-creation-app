@@ -1,0 +1,94 @@
+[
+  {
+    "orderId": "c9674685-6a0a-4778-96a2-05b26b17264c",
+    "lines": [
+      {
+        "productId": "p1",
+        "name": "Wireless Mouse",
+        "unitPrice": 19.99,
+        "quantity": 1,
+        "lineTotal": 19.99
+      }
+    ],
+    "subtotal": 19.99,
+    "discountApplied": false,
+    "discountRate": 0,
+    "total": 19.99,
+    "createdAt": "2026-07-28T08:19:48.702Z"
+  },
+  {
+    "orderId": "91929706-f81a-4911-945e-99bd58c32cb7",
+    "lines": [
+      {
+        "productId": "p2",
+        "name": "Mechanical Keyboard",
+        "unitPrice": 79.5,
+        "quantity": 1,
+        "lineTotal": 79.5
+      }
+    ],
+    "subtotal": 79.5,
+    "discountApplied": false,
+    "discountRate": 0,
+    "total": 79.5,
+    "createdAt": "2026-07-28T08:44:47.539Z"
+  },
+  {
+    "orderId": "1f8a6040-dcaf-4719-b1b5-4b0fd7ec60a6",
+    "lines": [
+      {
+        "productId": "p3",
+        "name": "27-inch Monitor",
+        "unitPrice": 189,
+        "quantity": 3,
+        "lineTotal": 567
+      },
+      {
+        "productId": "p1",
+        "name": "Wireless Mouse",
+        "unitPrice": 19.99,
+        "quantity": 3,
+        "lineTotal": 59.97
+      }
+    ],
+    "subtotal": 626.97,
+    "discountApplied": true,
+    "discountRate": 0.1,
+    "total": 564.27,
+    "createdAt": "2026-07-28T09:18:57.471Z"
+  },
+  {
+    "orderId": "ff7e77f1-6961-457c-9f7d-416b6b7973da",
+    "lines": [
+      {
+        "productId": "p1",
+        "name": "Wireless Mouse",
+        "unitPrice": 19.99,
+        "quantity": 2,
+        "lineTotal": 39.98
+      }
+    ],
+    "subtotal": 39.98,
+    "discountApplied": false,
+    "discountRate": 0,
+    "total": 39.98,
+    "createdAt": "2026-07-28T14:47:36.961Z"
+  },
+  {
+    "orderId": "7e8bfc14-aac9-4a7c-9d36-36ff4dc55544",
+    "lines": [
+      {
+        "productId": "p3",
+        "name": "27-inch Monitor",
+        "unitPrice": 189,
+        "quantity": 1,
+        "lineTotal": 189
+      }
+    ],
+    "subtotal": 189,
+    "discountApplied": true,
+    "discountRate": 0.1,
+    "total": 170.1,
+    "createdAt": "2026-07-28T14:47:36.971Z"
+  }
+]

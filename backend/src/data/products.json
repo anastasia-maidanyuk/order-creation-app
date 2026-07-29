@@ -1,0 +1,62 @@
+[
+  {
+    "id": "p1",
+    "name": "Wireless Mouse",
+    "price": 19.99,
+    "stock": 16
+  },
+  {
+    "id": "p2",
+    "name": "Mechanical Keyboard",
+    "price": 79.5,
+    "stock": 11
+  },
+  {
+    "id": "p3",
+    "name": "27-inch Monitor",
+    "price": 189,
+    "stock": 2
+  },
+  {
+    "id": "p4",
+    "name": "USB-C Hub",
+    "price": 24,
+    "stock": 29
+  },
+  {
+    "id": "p5",
+    "name": "Webcam 1080p",
+    "price": 45,
+    "stock": 0
+  },
+  {
+    "id": "p6",
+    "name": "Laptop Stand",
+    "price": 32.5,
+    "stock": 18
+  },
+  {
+    "id": "p7",
+    "name": "Bluetooth Speaker",
+    "price": 54.99,
+    "stock": 20
+  },
+  {
+    "id": "p8",
+    "name": "External SSD 1TB",
+    "price": 89,
+    "stock": 10
+  },
+  {
+    "id": "p9",
+    "name": "Noise-Cancelling Headphones",
+    "price": 129,
+    "stock": 7
+  },
+  {
+    "id": "p10",
+    "name": "Desk Lamp",
+    "price": 22,
+    "stock": 0
+  }
+]
