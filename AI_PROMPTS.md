@@ -162,6 +162,134 @@ explain and reproduce every scenario.
 
 ---
 
+## 6. UI migration to Material UI
+
+**Prompt:**
+> "The current design looks plain and unpolished — can we make it more
+> user-friendly and visually appealing?"
+
+**What AI suggested:** Rewriting the product grid from a plain HTML table
+into card-based components with stock badges, a quantity stepper, and
+icon-based actions.
+
+**My contribution:** Later in the project, I migrated the UI further to
+Material UI (`Card`, `Chip`, `Autocomplete`, `Pagination`, etc.), replacing
+the custom CSS design system. AI helped wire individual MUI components
+(e.g. the search `Autocomplete` and its styling) when I asked for specific
+pieces, but the decision to adopt MUI as the component library was mine.
+
+---
+
+## 7. Search, sort, and pagination refinement
+
+**Prompt:**
+> "I'd like to add an autocomplete dropdown to the product search field."
+
+**What AI suggested:** Using MUI's `Autocomplete` component instead of a
+plain text input, since it already provides keyboard navigation, a clear
+button, and dropdown filtering out of the box.
+
+**What I changed:** After the dropdown was implemented, I noticed it
+opened even when the field was empty and just focused. I asked for it to
+only open once the user had actually started typing. AI added a controlled
+`open` state gated on whether the search term was non-empty, which I
+verified by testing focus-without-typing versus typing-then-clearing
+manually.
+
+**Pagination:** I initially asked whether pagination should be
+implemented on the backend (`GET /api/products?page=&limit=`) rather than
+the frontend, and decided to build it server-side after discussing the
+tradeoffs. After implementing it end-to-end, I concluded the added
+complexity wasn't justified for a catalog this small, and asked to revert
+to simple client-side slicing instead. The reverted version AI produced
+had a bug on the first pass — the product grid component was accidentally
+duplicated in the page markup, and the cart component was still being
+passed a prop it no longer accepted after an earlier type change. I caught
+this by reviewing the file before accepting it, and asked for a corrected
+version.
+
+---
+
+## 8. Routing — from tab state to real URLs
+
+**Prompt:**
+> "Why do different views share the same URL? If I open Order History and
+> reload the page, it resets back to the product list — that shouldn't
+> happen. I think we need two real pages/routes instead of switching tabs
+> in state."
+
+**What I identified myself:** This bug — that switching views via local
+component state doesn't survive a page reload — was something I found by
+testing the app myself, not something AI flagged proactively.
+
+**What AI suggested:** Introducing `react-router-dom`, splitting the
+single page component into a "New Order" page and an "Order History" page,
+with the top-level `App.tsx` reduced to a routing shell that renders the
+active route.
+
+**What I verified:** That reloading the page while on the Order History
+route actually keeps the user there (the specific behavior the bug was
+about), by testing it manually after the change was applied.
+
+---
+
+## 9. Code review pass and bug fixes (post-MUI migration)
+
+After completing the Material UI migration, routing changes, and image
+carousel feature, I asked for a fresh code review to catch anything
+introduced during that stretch of changes, since the assignment
+explicitly calls out "code review and improvement" as a stage to
+document.
+
+**Prompt:**
+> "Here's an external code review of the project — can you go through it
+> and tell me which issues are actually critical for this assignment,
+> versus which are lower priority?"
+
+**What AI did:** Triaged the review's findings against the assignment's
+actual scope, distinguishing genuinely blocking issues from
+senior-level suggestions that would be over-engineering for a take-home
+test (e.g. atomic file writes, a repository abstraction layer for tests).
+
+**Issues I chose to fix immediately:**
+1. An invalid `tsconfig.json` compiler option that made `tsc` fail outright.
+2. Test runs mutating and leaving uncommitted changes in the order-history
+   data file.
+3. A malformed request body (`{"items":[null]}`) causing an unhandled
+   500 error instead of a clean validation error.
+4. A missing `dist/data` copy step in the backend build script, which made
+   `npm start` crash after a fresh `npm run build`.
+
+**What I verified myself, not just accepted on AI's word:** For each fix,
+I ran the actual command myself (`npx tsc --noEmit`, `npm test`, `git
+status`, `npm run build && npm start`, and a manual `curl` request) and
+confirmed the before/after behavior, rather than trusting the explanation
+alone. One fix (`ignoreDeprecations` value in `tsconfig.json`) needed two
+follow-up rounds — my installed TypeScript version required a different
+value than AI initially suggested — which I only caught because I re-ran
+`tsc` myself and reported the exact error back.
+
+**Follow-up review — UI bugs found via screenshots:**
+
+**Prompt:**
+> "[Screenshot] When the validation message appears, the quantity stepper
+> and Add button jump upward. Also, a product that's out of stock still
+> shows a leftover quantity in its input field — that shouldn't happen."
+
+**What AI found:** The card's height was collapsing/expanding based on
+whether an error message was rendered at all, causing the layout shift;
+and stale quantity state wasn't being cleared or hidden once a product's
+stock reached zero.
+
+**What I did:** After the first fix, I noticed the layout still shifted
+specifically when the error message wrapped onto two lines rather than
+one, and reported that back with a follow-up screenshot. The final fix
+reserves a fixed two-line height for the error message area regardless of
+its content, which I confirmed visually resolved the issue for both the
+one-line and two-line cases.
+
+---
+
 ## Summary of what AI contributed vs. what I decided
 
 | Area | AI contribution | My contribution |
@@ -171,3 +299,7 @@ explain and reproduce every scenario.
 | Feature scope | Suggested a list of possible features | Chose which 3 to implement, to keep scope focused |
 | Feature implementation | Wrote first-pass code for debounce hook, search/sort logic, order history component/route | Reviewed line-by-line, caught a tab-rendering logic error introduced during integration, tested each feature manually |
 | Testing | Confirmed test coverage against spec | Wrote the manual end-to-end test checklist and executed it personally |
+| UI framework | Suggested and implemented the initial card-based redesign | Decided to adopt Material UI as the component library; directed which components to use where |
+| Search/pagination | Implemented `Autocomplete` search and initial server-side pagination | Caught the dropdown opening on empty focus; decided server-side pagination was unnecessary complexity for this dataset size and reverted to client-side; caught a duplicated-component bug in the reverted version |
+| Routing | Implemented the `react-router-dom` migration | Identified the underlying bug (state loss on reload) myself before asking for a fix; verified the fix resolved the specific reload scenario |
+| Code review response | Triaged an external code review, proposed fixes | Chose which issues were actually critical for this assignment's scope; verified every fix by running the actual command, not by trusting the explanation |

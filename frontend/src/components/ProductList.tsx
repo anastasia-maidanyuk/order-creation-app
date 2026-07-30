@@ -212,7 +212,7 @@ function ProductCard({
 
   const debouncedValue = useDebounce(quantityValue, 400);
   let liveError: string | null = null;
-  if (debouncedValue) {
+  if (!outOfStock && debouncedValue) {
     const parsed = Number(debouncedValue);
     if (!Number.isInteger(parsed) || parsed <= 0) {
       liveError = 'Quantity must be a positive whole number.';
@@ -248,10 +248,10 @@ function ProductCard({
             </IconButton>
             <InputBase
               type="number"
-              value={quantityValue}
+              value={outOfStock ? '' : quantityValue}
               disabled={outOfStock}
               onChange={(e) => onQuantityChange(product.id, e.target.value)}
-              placeholder="1"
+              placeholder={outOfStock ? '0' : '1'}
               sx={{
                 width: 42, textAlign: 'center', fontSize: '0.9rem',
                 bgcolor: displayError ? '#fdecec' : 'transparent',
@@ -274,7 +274,21 @@ function ProductCard({
           </Button>
         </Box>
 
-        {displayError && <Typography variant="caption" color="error">{displayError}</Typography>}
+        <Typography
+          variant="caption"
+          color="error"
+          sx={{
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+            lineHeight: '1.2em',
+            height: '2.4em',
+            visibility: displayError ? 'visible' : 'hidden',
+          }}
+        >
+          {displayError || '\u00A0'}
+        </Typography>
       </CardContent>
     </Card>
   );

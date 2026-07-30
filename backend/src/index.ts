@@ -22,7 +22,7 @@ app.use((err: unknown, _req: express.Request, res: express.Response, _next: expr
     return;
   }
   console.error('Unhandled error:', err);
-  res.status(500).json({ message: 'Something went wrong.' });
+  res.status(500).json({ message: 'Something went wrong while creating the order.' });
 });
 
 app.listen(PORT, () => {
