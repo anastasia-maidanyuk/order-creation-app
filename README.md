@@ -127,9 +127,16 @@ npm start
 `npm run build` compiles TypeScript and copies the JSON data files into
 `dist/`, so the compiled output runs standalone with `npm start`.
 
+## Documentation
+
+See the [technical documentation](https://docs.google.com/document/d/1T8kCmOmAanGR-OjfDPAiq7CzeVugjjEJ/edit?usp=sharing&ouid=107930657276546771864&rtpof=true&sd=true) for a deeper reference —
+system architecture, the full API contract with request/response
+examples, and the testing strategy (what's covered by automated tests,
+what was verified manually, and what's deliberately out of scope).
+
 ## Loom video
 
-[Link to Loom video here]
+[Watch the video walkthrough](https://www.loom.com/share/8ba5cf8a143d4c50839cf979bbd2b74b)
 
 ## AI usage
 
